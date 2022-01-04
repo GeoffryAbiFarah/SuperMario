@@ -22,6 +22,8 @@ public class Scene extends JPanel{
 	private int xBackground;
 	private int xBackground2;
 	private int dx;
+	private int yGround;
+	private int highCeiling;
 	
 	private ImageIcon iconCastle;
 	private Image imgCastle;
@@ -42,6 +44,8 @@ public class Scene extends JPanel{
 		xBackground = -50;
 		xBackground2 = 750;
 		xPos = -1;
+		yGround = 293;
+		highCeiling = 0;
 		//getClass().getRessource() is used because when the jar is created, it cannot find src/images/...
 		iconBackground = new ImageIcon(getClass().getResource("/images/background.png"));
 		imgBackground = iconBackground.getImage();
@@ -65,6 +69,8 @@ public class Scene extends JPanel{
 		screenChrono.start();
 	}
 	
+
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics g2 = (Graphics2D) g;
@@ -78,14 +84,17 @@ public class Scene extends JPanel{
 		moveBg();
 		redTube1.movement();
 		
-		
 		g2.drawImage(imgBackground, xBackground, 0, null); //draw the bg
 		g2.drawImage(imgBackground2, xBackground2, 0, null);
-		g2.drawImage(mario.walk("mario", 25), mario.getX(), mario.getY(), null);
 		g2.drawImage(redTube1.getImgRedTube(), redTube1.getX(), redTube1.getY(), null);
 		g2.drawImage(bloc1.getImgBloc(), bloc1.getX() -xPos, bloc1.getY(), null);
 		g2.drawImage(imgCastle, 10 - xPos, 95, null);
 		g2.drawImage(imgStart, 220 - xPos, 234, null);
+		
+		if(mario.isJumping()) g2.drawImage(mario.jump(), mario.getX(), mario.getY(), null);
+		else g2.drawImage(mario.walk("mario", 25), mario.getX(), mario.getY(), null);
+
+
 	}
 	
 	public void moveBg() {
@@ -133,6 +142,66 @@ public class Scene extends JPanel{
 
 	public void setxBackground2(int xBackground2) {
 		this.xBackground2 = xBackground2;
+	}
+	
+	public int getyGround() {
+		return yGround;
+	}
+
+	public void setyGround(int yGround) {
+		this.yGround = yGround;
+	}
+
+	public int getHighCeiling() {
+		return highCeiling;
+	}
+
+	public void setHighCeiling(int highCeiling) {
+		this.highCeiling = highCeiling;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public ImageIcon getIconBackground() {
+		return iconBackground;
+	}
+
+	public Image getImgBackground() {
+		return imgBackground;
+	}
+
+	public Image getImgBackground2() {
+		return imgBackground2;
+	}
+
+	public ImageIcon getIconCastle() {
+		return iconCastle;
+	}
+
+	public Image getImgCastle() {
+		return imgCastle;
+	}
+
+	public ImageIcon getIconStart() {
+		return iconStart;
+	}
+
+	public Image getImgStart() {
+		return imgStart;
+	}
+
+	public Mario getMario() {
+		return mario;
+	}
+
+	public RedTube getRedTube1() {
+		return redTube1;
+	}
+
+	public Bloc getBloc1() {
+		return bloc1;
 	}
 
 }

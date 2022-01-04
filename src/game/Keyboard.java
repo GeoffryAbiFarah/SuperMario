@@ -29,12 +29,14 @@ public class Keyboard implements KeyListener{
 			Main.scene.mario.setWalking(true);
 			Main.scene.mario.setToRight(false);
 		}
+		else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			Main.scene.mario.setJumping(true);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		Main.scene.setDx(0);
-
 		Main.scene.mario.setWalking(false);
 	}
 	
