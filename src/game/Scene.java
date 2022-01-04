@@ -7,6 +7,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import game.characters.Mario;
+
 public class Scene extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -14,9 +16,6 @@ public class Scene extends JPanel{
 	private ImageIcon iconBackground;
 	private Image imgBackground;
 	private Image imgBackground2;
-	
-	private ImageIcon iconMario;
-	private Image imgMario;
 	
 	private int xBackground;
 	private int xBackground2;
@@ -30,6 +29,8 @@ public class Scene extends JPanel{
 	
 	private int xPos;
 	
+	Mario mario;
+	
 	public Scene() {
 		super();
 		dx = 0;
@@ -41,15 +42,13 @@ public class Scene extends JPanel{
 		imgBackground = iconBackground.getImage();
 		imgBackground2 = iconBackground.getImage();
 		
-		iconMario = new ImageIcon(getClass().getResource("/images/marioRightWalk.png"));
-		imgMario = iconMario.getImage();
-		
 		iconCastle = new ImageIcon(getClass().getResource("/images/castle1.png"));
 		imgCastle = iconCastle.getImage();
 		
 		iconStart = new ImageIcon(getClass().getResource("/images/start.png"));
 		imgStart = iconStart.getImage();
 		
+		mario = new Mario(300, 245);
 		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
@@ -67,7 +66,7 @@ public class Scene extends JPanel{
 		
 		g2.drawImage(imgBackground, xBackground, 0, null); //draw the bg
 		g2.drawImage(imgBackground2, xBackground2, 0, null);
-		g2.drawImage(imgMario, 300, 245, null); //draw mario
+		g2.drawImage(mario.getImgMario(), 300, 245, null);
 		g2.drawImage(imgCastle, 10 - xPos, 95, null);
 		g2.drawImage(imgStart, 220 - xPos, 234, null);
 	}
