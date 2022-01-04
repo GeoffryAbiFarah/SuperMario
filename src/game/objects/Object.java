@@ -1,5 +1,7 @@
 package game.objects;
 
+import game.Main;
+
 public class Object {
 	
 	private int width, length;
@@ -13,6 +15,11 @@ public class Object {
 		this.y = y;
 	}
 	
+	public void movement() {
+		if(Main.scene.getxPos() >= 0) {
+			x -= Main.scene.getDx();
+		}
+	}
 	
 	//getters and setters
 	public int getWidth() {

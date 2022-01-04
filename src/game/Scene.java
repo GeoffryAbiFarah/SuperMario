@@ -69,12 +69,20 @@ public class Scene extends JPanel{
 		super.paintComponent(g);
 		Graphics g2 = (Graphics2D) g;
 		
+		//detect collision
+		if(mario.contactBefore(redTube1) == true) {
+			mario.setWalking(false);
+			dx = 0;
+		}
+		
 		moveBg();
+		redTube1.movement();
+		
 		
 		g2.drawImage(imgBackground, xBackground, 0, null); //draw the bg
 		g2.drawImage(imgBackground2, xBackground2, 0, null);
 		g2.drawImage(mario.walk("mario", 25), mario.getX(), mario.getY(), null);
-		g2.drawImage(redTube1.getImgRedTube(), redTube1.getX() -xPos, redTube1.getY(), null);
+		g2.drawImage(redTube1.getImgRedTube(), redTube1.getX(), redTube1.getY(), null);
 		g2.drawImage(bloc1.getImgBloc(), bloc1.getX() -xPos, bloc1.getY(), null);
 		g2.drawImage(imgCastle, 10 - xPos, 95, null);
 		g2.drawImage(imgStart, 220 - xPos, 234, null);

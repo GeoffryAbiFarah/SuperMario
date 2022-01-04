@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import game.Main;
+import game.objects.Object;
 
 public class Character {
 	
@@ -52,6 +53,18 @@ public class Character {
 		img = icon.getImage();
 		
 		return img;
+	}
+	
+	public boolean contactBefore(Object object) {
+		if(toRight == true) {
+			if (x + width < object.getX() || x + width > object.getX() + 5 || y + length < object.getY() || y >= object.getY() + object.getLength()) {
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	//getters and setters
