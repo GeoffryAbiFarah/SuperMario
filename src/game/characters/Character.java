@@ -1,5 +1,11 @@
 package game.characters;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+import game.Main;
+
 public class Character {
 	
 	private int width, length; //size
@@ -17,6 +23,35 @@ public class Character {
 		this.isWalking = false;
 		this.toRight = true;
 		this.counter = 0;
+	}
+	
+	public Image walk(String name, int frequency) {
+		
+		String str;
+		ImageIcon icon;
+		Image img;
+		
+		if(isWalking == false || Main.scene.getxPos() <= 0) {
+			if(toRight == true) str = "/images/"+ name + "StopRight.png";
+			else str = "/images/"+ name + "StopLeft.png";
+		}
+		else {
+			counter++;
+			if(counter / frequency == 0) {
+				if(toRight == true) str = "/images/"+ name + "StopRight.png";
+				else str = "/images/"+ name + "StopLeft.png";
+			}
+			else {
+				if(toRight == true) str = "/images/"+ name + "WalkRight"+ ".png";
+				else str = "/images/"+ name + "WalkLeft"+ ".png";
+			}
+			if(counter == 2*frequency) counter = 0;
+		}
+		
+		icon = new ImageIcon(getClass().getResource(str));
+		img = icon.getImage();
+		
+		return img;
 	}
 
 	//getters and setters

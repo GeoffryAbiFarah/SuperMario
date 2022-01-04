@@ -66,7 +66,7 @@ public class Scene extends JPanel{
 		
 		g2.drawImage(imgBackground, xBackground, 0, null); //draw the bg
 		g2.drawImage(imgBackground2, xBackground2, 0, null);
-		g2.drawImage(mario.getImgMario(), 300, 245, null);
+		g2.drawImage(mario.walk("mario", 25), 300, 245, null);
 		g2.drawImage(imgCastle, 10 - xPos, 95, null);
 		g2.drawImage(imgStart, 220 - xPos, 234, null);
 	}

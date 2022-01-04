@@ -19,17 +19,23 @@ public class Keyboard implements KeyListener{
 				Main.scene.setxBackground(-50);
 				Main.scene.setxBackground2(750);
 			}
-			
+			Main.scene.mario.setWalking(true);
+			Main.scene.mario.setToRight(true);
 			Main.scene.setDx(1);
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			Main.scene.setDx(-1);
+
+			Main.scene.mario.setWalking(true);
+			Main.scene.mario.setToRight(false);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		Main.scene.setDx(0);
+
+		Main.scene.mario.setWalking(false);
 	}
 	
 }
