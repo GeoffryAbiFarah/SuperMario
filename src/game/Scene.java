@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.characters.Mario;
+import game.objects.Bloc;
+import game.objects.RedTube;
 
 public class Scene extends JPanel{
 
@@ -29,7 +31,10 @@ public class Scene extends JPanel{
 	
 	private int xPos;
 	
-	Mario mario;
+	public Mario mario;
+	
+	public RedTube redTube1;
+	public Bloc bloc1;
 	
 	public Scene() {
 		super();
@@ -49,6 +54,8 @@ public class Scene extends JPanel{
 		imgStart = iconStart.getImage();
 		
 		mario = new Mario(300, 245);
+		redTube1 = new RedTube(600, 230);
+		bloc1 = new Bloc(400, 180);
 		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
@@ -66,7 +73,9 @@ public class Scene extends JPanel{
 		
 		g2.drawImage(imgBackground, xBackground, 0, null); //draw the bg
 		g2.drawImage(imgBackground2, xBackground2, 0, null);
-		g2.drawImage(mario.walk("mario", 25), 300, 245, null);
+		g2.drawImage(mario.walk("mario", 25), mario.getX(), mario.getY(), null);
+		g2.drawImage(redTube1.getImgRedTube(), redTube1.getX() -xPos, redTube1.getY(), null);
+		g2.drawImage(bloc1.getImgBloc(), bloc1.getX() -xPos, bloc1.getY(), null);
 		g2.drawImage(imgCastle, 10 - xPos, 95, null);
 		g2.drawImage(imgStart, 220 - xPos, 234, null);
 	}
